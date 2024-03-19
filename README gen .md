@@ -68,23 +68,24 @@ Finalmente, como en Data es muy importante trabajar con datos de calidad, deber�
 Documentar alcance del proyecto
 EDA de los datos
 Repositorio en Github
-Implementación stack tecnológico
+Implementación stack tecnológico (pyspark, )
 Metodología de trabajo
 Diseño detallado
-Equipo de trabajo - Roles y responsabilidades
+Equipo de trabajo - Roles y responsabilidades (da, de, ml) (BK -FK)
 Cronograma general - Gantt
 Análisis preliminar de calidad de datos
+
 ---
 
 ###  Sprint #2
 ETL completo
 Estructura de datos implementada (DW, DL, etc). Pueden usar algún servicio
-Pipeline ETL automatizado
+Pipeline ETL automatizado (AIRFLOW)
 Diseño del Modelo ER
 Pipelines para alimentar el DW
 Data Warehouse
 Automatización
-Validación de datos
+Validación de datos (VALIDACION POST ETL)
 Documentación
 Diagrama ER detallado (tablas, PK, FK y tipo de dato)
 Diccionario de datos
