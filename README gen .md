@@ -1,19 +1,4 @@
 ## sesion 1
-Máximo 5 integrantes y mínimo 4
-Les vamos a ofrecer dos temas y uds van a elegir la que más les guste para desarrollar el PF
-Por Slack verán un formulario de inscripción que deberán completar con nombre de integrantes y temática elegida .
-Serán agregados a un canal de Slack de su grupo conjuntamente con su mentor. Organícense para comenzar las dailies con todo.
-
-
-## Sprint #1
-Comprensión de la situación actual: contextualizarla y expresar posibles análisis/ soluciones en torno a la misma.
-Objetivos y alcance
-Planteo de KPIs
-Armar repo de Github para trabajar de manera colaborativa
-Con qué herramientas van a realizar la arquitectura del proyecto
-Estimación de la duración de cada tarea en diagrama de Gantt
-
-
 
 - Seleción de Proyecto:
 Propuesta 2: NYC 
@@ -23,21 +8,14 @@ Claudio Valerio Quispe Alarcon
 Duvan Eduardo Robayo Roa
 Herlin Isaac Yauri Barrios
 
-- Objetivos y alcance:
-"Una empresa de servicios de transporte de pasajeros, que actualmente se encuentra operando en el sector de micros de media y larga distancia, está interesada en invertir en el sector de transporte de pasajeros con automóviles. Con una visión de un futuro menos contaminado y ajustarse a las tendencias de mercado actuales, quieren corroborar la relación entre estos medios de transporte particulares y la calidad del aire, como también la contaminación sonora, para estudiar la posibilidad de implementar vehículos eléctricos a su flota; ya sea en su totalidad o parte de la misma.
-
-​Pero debido a que sería una unidad de negocio nueva, se pretende hacer un análisis preliminar del movimiento de los taxis en la ciudad de Nueva York, para poder obtener un marco de referencia y poder tomar decisiones bien fundamentadas.
-
 ​Tu equipo es contratado por dicha empresa, con el objetivo de acompañar al negocio, en ese proceso de toma de decisión, para lo cual deberán utilizar los datos provistos de mayor calidad encontrados, y cruzarlo con otros datos, como los ofrecidos por viajes compartidos, calidad del aire, contaminación sonora y correlaciones climáticas. Nota: Pueden agregar todos los datasets que consideren pertinentes para cumplir la propuesta de trabajo, pero es obligatorio cruzar el dataset de taxis con al menos otros dos (condición necesaria de aprobación). "
-
-
-ahora con estos puntos necesito desarrollar estos puntos ?
-Sprint #1: Puesta en marcha del proyecto y Trabajo con Datos
+---
+### Sprint #1
+- Puesta en marcha del proyecto y Trabajo con Datos
 En esta semana deben realizar un análisis del proyecto seleccionado y los datos disponibles. En base al entendimiento que logren de la temática, deben proponer como encararla, brindando una solución o herramientas desarrolladas por ellos mismos para acercarse a dicha solución.
 
 
 Esta propuesta deberá contemplar los siguientes ítems:
-
 
 Entendimiento de la situación actual
 En la propuesta debe quedar manifiesto un adecuado manejo de la problemática, deben poder contextualizarla y expresar posibles análisis/ soluciones en torno a la misma.
@@ -85,7 +63,7 @@ Una parte muy importante de la solución propuesta, es con qué herramientas (st
 
 Finalmente, como en Data es muy importante trabajar con datos de calidad, deberán incluir en su informe un análisis sobre los datos con los que van a trabajar (metadatos), detallandolos lo más posible: fuentes y confiabilidad de las mismas, qué representa cada columna de cada dataset, tipos de datos, método de adquisición, fecha de adquisición y ultima actualización, etc.
 
-Hitos
+- Hitos
 3 KPI’s
 Documentar alcance del proyecto
 EDA de los datos
@@ -96,9 +74,9 @@ Diseño detallado
 Equipo de trabajo - Roles y responsabilidades
 Cronograma general - Gantt
 Análisis preliminar de calidad de datos
+---
 
-
-Sprint #2
+###  Sprint #2
 ETL completo
 Estructura de datos implementada (DW, DL, etc). Pueden usar algún servicio
 Pipeline ETL automatizado
@@ -113,9 +91,9 @@ Diccionario de datos
 Workflow detallando tecnologías
 Análisis de datos de muestra
 MVP/ Proof of Concept de producto de ML ó MVP/ Proof of Concept de Dashboard
+---
 
-
-Sprint #3
+### Sprint #3
 Qué esperamos de este Sprint: 
 Diseño de Reportes/Dashboards
 KPIs
@@ -125,7 +103,8 @@ Documentación
 Selección del modelo, feature engineering
 Informe de análisis
 Video del proyecto realizado, para que, en caso de ganar, pueda ser presentado en la graduación final.
-
+---
+Diccionario
 Para desarrollar un modelo con estas tablas, primero necesitamos identificar cómo se relacionan entre sí. Aquí hay un resumen de los campos que parecen relacionarse en las diferentes tablas:
 ---
 1. **Tabla 1 (Taxi Data):**
