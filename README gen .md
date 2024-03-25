@@ -64,16 +64,16 @@ Una parte muy importante de la solución propuesta, es con qué herramientas (st
 Finalmente, como en Data es muy importante trabajar con datos de calidad, deberán incluir en su informe un análisis sobre los datos con los que van a trabajar (metadatos), detallandolos lo más posible: fuentes y confiabilidad de las mismas, qué representa cada columna de cada dataset, tipos de datos, método de adquisición, fecha de adquisición y ultima actualización, etc.
 
 - Hitos
-3 KPI’s
-Documentar alcance del proyecto
-EDA de los datos
-Repositorio en Github
-Implementación stack tecnológico (pyspark, )
+3 KPI’s                                   BYRON
+Documentar alcance del proyecto           LIBRE
+EDA de los datos                          CLAUDIO
+Repositorio en Github                     GRUPO
+Implementación stack tecnológico (pyspark, ) 
 Metodología de trabajo
 Diseño detallado
-Equipo de trabajo - Roles y responsabilidades (da, de, ml) (BK -FK)
-Cronograma general - Gantt
-Análisis preliminar de calidad de datos
+Equipo de trabajo - Roles y responsabilidades (da, de, ml) (BK -FK)  GRUPO
+Cronograma general - Gantt                                           DUVAN
+Análisis preliminar de calidad de datos                              GRUPO
 
 ---
 
@@ -176,5 +176,57 @@ Para relacionar la Tabla 3 (Dispatch Data) con la Tabla 4 (High Volume For-Hire 
    - Similar a la relación con la Tabla 1, podríamos relacionar estas tablas utilizando la ubicación de inicio y fin del viaje, así como la fecha y hora del viaje. Los viajes en taxis verdes (Tabla 2) podrían estar presentes en la Tabla 4 si también son considerados servicios de alquiler de alto volumen.
 
 En resumen, la estrategia de relación implica buscar campos comunes entre las diferentes tablas, como la fecha y hora del viaje, la ubicación de inicio y fin, o algún identificador único del viaje, para establecer relaciones entre ellas.
+---
+
+
+- https://open-meteo.com/en/docs/historical-weather-api<br>
+
+Integración de datos: Puedes combinar los datos meteorológicos con tus datos de taxis amarillos y verdes utilizando herramientas de análisis de datos como Pandas en Python. Por ejemplo, podrías agregar una columna al conjunto de datos de los taxis que contenga la temperatura en el momento y lugar de cada viaje.
+
+Análisis de correlación: Una vez que hayas integrado los datos, podrías realizar un análisis de correlación para determinar si existe alguna relación entre las condiciones meteorológicas y el número de viajes de taxis. Por ejemplo, podrías investigar si los días más fríos o lluviosos tienen un impacto en la demanda de taxis.
+
+Visualización de datos: Utiliza gráficos y visualizaciones para presentar tus hallazgos de manera clara y comprensible. Por ejemplo, podrías crear gráficos que muestren cómo varía el número de viajes de taxis en función de la temperatura o la precipitación.
+
+
+- https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r/about_data
+
+El conjunto de datos sobre la calidad del aire en la ciudad de Nueva York proporcionado por el Departamento de Salud y Salud Mental (DOHMH) puede ser invaluable para tu proyecto de optimización de la sostenibilidad en los taxis de Nueva York. Aquí hay algunas formas en las que este conjunto de datos podría ser útil:
+
+Monitoreo de la calidad del aire: Puedes utilizar los datos proporcionados para monitorear los niveles de contaminación del aire en diferentes áreas de la ciudad. Esto te permitirá identificar áreas con altos niveles de contaminación, lo que podría influir en las decisiones sobre las rutas de los taxis y los puntos de recogida.
+
+Evaluación de la exposición: Al comprender los niveles de contaminación del aire en diferentes vecindarios, puedes evaluar la exposición de los conductores y pasajeros de los taxis a la contaminación del aire. Esto podría ayudarte a identificar áreas donde se necesitan medidas adicionales para proteger la salud de los ocupantes de los taxis.
+
+Planificación de rutas: Utilizando los datos de calidad del aire junto con otros datos de tráfico y geoespaciales, puedes planificar rutas óptimas para los taxis que minimicen la exposición a la contaminación del aire y reduzcan el tiempo de viaje.
+
+Sensibilización y educación: Los datos sobre la calidad del aire también pueden ser útiles para sensibilizar a los conductores de taxis y a los pasajeros sobre los riesgos para la salud asociados con la exposición a la contaminación del aire. Esto podría llevar a cambios de comportamiento que reduzcan la exposición y promuevan prácticas más sostenibles.
+
+En resumen, el conjunto de datos sobre la calidad del aire en la ciudad de Nueva York te proporciona una base sólida de información para informar tus decisiones y estrategias relacionadas con la optimización de la sostenibilidad en los taxis de la ciudad. Utilizar estos datos de manera efectiva podría contribuir significativamente a la mejora de la calidad del aire y la salud pública en general.
+---
+
+https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64#wb-auto-6
+
+El aporte de esta información sobre las calificaciones de consumo de combustible es relevante para tu estudio sobre la sostenibilidad de los taxis en Nueva York por varias razones:
+
+Comparación de vehículos: Te permite comparar los niveles de consumo de combustible y las emisiones de dióxido de carbono (CO2) entre diferentes modelos de vehículos. Esto es importante para identificar qué vehículos son más eficientes en términos de consumo de combustible y emisiones, lo que puede influir en las decisiones de compra de vehículos para flotas de taxis.
+
+Impacto ambiental: Al proporcionar información sobre las emisiones de CO2 estimadas, te permite evaluar el impacto ambiental de los vehículos. Esto es crucial para tu estudio sobre sostenibilidad, ya que te permite identificar vehículos que emiten menos gases de efecto invernadero y, por lo tanto, tienen un menor impacto ambiental.
+
+Tendencias temporales: Al proporcionar datos de 1995 a 2014, con ajustes para reflejar pruebas de ciclo de 5, te permite analizar las tendencias temporales en el consumo de combustible y las emisiones de CO2. Esto puede ayudarte a identificar cómo ha evolucionado la eficiencia de los vehículos con el tiempo y cómo estas tendencias pueden afectar la sostenibilidad de los taxis en Nueva York.
+
+Información detallada: Los conjuntos de datos proporcionan información detallada sobre diferentes tipos de vehículos, como vehículos eléctricos con batería y vehículos híbridos enchufables, lo que te permite analizar específicamente la sostenibilidad de estos tipos de vehículos en el contexto de tu estudio sobre taxis en Nueva York.
+
+En resumen, esta información te proporciona datos clave para evaluar y comparar la sostenibilidad de los vehículos utilizados en flotas de taxis en Nueva York, lo que puede ayudarte a tomar decisiones informadas para mejorar la sostenibilidad y reducir el impacto ambiental de estas flotas.
+
+Para tu estudio sobre la sostenibilidad en el tránsito de taxis en Nueva York, te recomendaría descargar los conjuntos de datos que contienen las calificaciones de consumo de combustible para vehículos ligeros de modelo específico, así como las emisiones estimadas de dióxido de carbono (CO2). Esto te permitirá evaluar la eficiencia y el impacto ambiental de los vehículos utilizados en las flotas de taxis.
+
+En particular, te recomendaría descargar los siguientes conjuntos de datos:
+
+1. **2015-2019 Fuel Consumption Ratings (CSV en inglés y francés)**: Estos conjuntos de datos contienen calificaciones de consumo de combustible para vehículos fabricados entre 2015 y 2019. Esto te proporcionará información sobre modelos de vehículos más recientes, lo que puede ser relevante para evaluar la eficiencia de las flotas de taxis más modernas.
+
+2. **2005-2014 Fuel Consumption Ratings (CSV en inglés y francés)**: Estos conjuntos de datos contienen calificaciones de consumo de combustible para vehículos fabricados entre 2005 y 2014. Aunque estos vehículos son más antiguos, aún pueden ser utilizados en las flotas de taxis, por lo que es importante evaluar su eficiencia y su impacto ambiental.
+
+3. **1995-2004 Fuel Consumption Ratings (CSV en inglés y francés)**: Estos conjuntos de datos contienen calificaciones de consumo de combustible para vehículos fabricados entre 1995 y 2004. Si bien estos vehículos son aún más antiguos, pueden estar presentes en algunas flotas de taxis, especialmente en casos de vehículos más veteranos.
+
+Puedes utilizar estos conjuntos de datos para analizar las tendencias en el consumo de combustible y las emisiones de CO2 a lo largo del tiempo, así como para comparar la eficiencia de diferentes modelos de vehículos. Esto te ayudará a identificar oportunidades para mejorar la sostenibilidad en el tránsito de taxis en Nueva York.
 ---
 

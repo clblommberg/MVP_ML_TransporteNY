@@ -1,5 +1,5 @@
 # "Análisis de la Transformación Sostenible del Transporte en Nueva York: Datos Integrados y Perspectiva Temporal (2009-2023)"
-# "Optimización Ambiental del Transporte Urbano: Un Análisis de Datos para la Implementación de Vehículos Eléctricos en NYC (2009-2023)"
+# "Optimización Ambiental del Transporte Urbano: Un Análisis de Datos para la Implementación de Vehículos Eléctricos en NYC (2021-2023)"
 ### Entendimiento de la situación actual:
 La transformación del transporte en Nueva York, incluyendo el papel de los servicios de taxis y de viajes compartidos, así como la necesidad de mitigar el impacto ambiental de los medios de transporte.
 
@@ -46,13 +46,13 @@ La transformación del transporte en Nueva York, incluyendo el papel de los serv
 Esta propuesta se basa en un enfoque integral que aborda las necesidades del cliente y proporciona una solución completa para el problema planteado. El uso de datos de calidad y técnicas de análisis avanzadas permitirá obtener insights valiosos para la toma de decisiones en relación con la implementación de vehículos eléctricos en la flota de transporte de pasajeros.
 
 ### Ficheros de Datasets Raws:
-https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page <br>
+https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page <br> ok
 https://developers.google.com/transit?hl=es-419<br>
-https://open-meteo.com/en/docs/historical-weather-api<br>
-https://www.kaggle.com/datasets/lobosi/c02-emission-by-countrys-grouth-and-population<br>
-https://zenodo.org/records/3966543<br>
-https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r<br>
-https://en.wikipedia.org/wiki/Boroughs_of_New_York_City<br>
+https://open-meteo.com/en/docs/historical-weather-api<br> oks
+https://www.kaggle.com/datasets/lobosi/c02-emission-by-countrys-grouth-and-population<br> oks pero esitimacion 
+https://zenodo.org/records/3966543<br> oks
+https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r<br>  oks api 
+https://en.wikipedia.org/wiki/Boroughs_of_New_York_City<br> 
 https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64#wb-auto-6<br>
 
 
