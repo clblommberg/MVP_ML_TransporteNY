@@ -10,6 +10,5 @@ server/__pycache__
 server/yellow_final_3.parquet
 notebooks/01_Scraping.ipynb
 notebooks/ETL_yellow_herlin.ipynb
-notebooks/01_Scraping.ipynb
 src/*.jpg
 vis/*.jpg
