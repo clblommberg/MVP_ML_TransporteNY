@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:395f8bc01fe97db3877f8503ff3fbb99093bf97ac4880b3577b59d165a8d3af2
-size 82
+datasets/raw 
+notebooks/.ipynb_checkpoints
+gantt.py  
+gantt.xls  
+MODEL.PY 
+newplot.png
+PPT.pptx
+datasets/processed
+server/__pycache__
+server/yellow_final_3.parquet
+notebooks/01_Scraping.ipynb
+notebooks/ETL_yellow_herlin.ipynb
+notebooks/01_Scraping.ipynb
+src/*.jpg
+vis/*.jpg
