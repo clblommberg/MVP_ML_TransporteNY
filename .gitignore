@@ -11,5 +11,4 @@ server/__pycache__
 server/yellow_final_3.parquet
 notebooks/ETL_yellow_herlin.ipynb
 src/*.jpg
-vis/*.jpg
-Metodologia.md
+pfenv
