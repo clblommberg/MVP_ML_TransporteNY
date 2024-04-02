@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:84743ae558e713f98e0f0fc6fe4b472fd35e903df4eebb603e252d2c7a68211f
-size 152
+openmeteo-requests==1.2.0
+requests-cache==1.2.0
+retry-requests==2.0.0
+sodapy==2.2.0
+ckanapi==4.7
+selenium==4.18.1
+polars==0.20.16
+pyarrow==15.0.2
+
