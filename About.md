@@ -1,12 +1,14 @@
-![Metodología](vis/v1.jpg)
+![Sobre](vis/v1.jpg)
 ---
-`En este archivo encuentra la descripción del sistema de principios, técnicas y procedimientos definidos por el equipo de trabajo de datadiip para organizar y ejecutar las actividades del proyecto en mención.`
+`En este archivo encuentra la introducción sobre la situación de la movilidad en transporte en Nueva York`
 ---
 ![Intro](vis/v3.jpg)
 
->En nuestro equipo, optamos por implementar una **metodología ágil**, donde el marco de trabajo principal será **Scrumban**, una combinación de Scrum y Kanban. Esta elección nos permite aprovechar la estructura de Scrum y el flujo de trabajo de Kanban que permite la **flexibilización de los roles de trabajo** y la limitación de **trabajo en progreso**.
+>La ciudad de Nueva York ha tenido un crecimiento acelerado en las últimas décadas, la ciudad cuenta con más de 8 millones de habitantes en su zona urbana y más de **22 millones de habitantes en la zona metropolitana**, cuenta con una densidad de **10.756 habitantes por kilometro cuadrado** según fuentes oficiales. Los desafíos en transporte también son relevantes, en promedio una persona gasta más de **40 minutos para llegar a su trabajo** y el sistema de transporte está compuesto de opciones como el metro, los autobuses, la bicicleta y los taxis regulados por la **Comisión de Taxis y Limosinas (TLC)** y el **Departamento de Transporte de la Ciudad de Nueva York (DOT)**.
+
+Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora en materia de transporte para mejorar la calidad de vida de los neoyorquinos en los que se destaca: mejorar la seguridad vial en las calles con la implementación del programa **Visión Cero**, expandir la **red de ciclorutas**, mejorar el tránsito para el **transporte público**, mejorar el **transporte de carga** debido a que la ciudad tuvo una explosión de compras en línea y entregas puerta a puerta, implementar un **sistema de aparcamiento inteligente** y un sistema de movilidad centrado en la **sostenibilidad**. Para ver más acerca de este reporte puede consultar la [Documentación](datasets\docs\Strategic-plan-2016.pdf)
 >
-> ![AGIL](vis/v4.jpg)
+> ![Alcance](vis/v4.jpg)
 >
 > ## ¿Por qué metodología ágil y no tradicional?
 > 
