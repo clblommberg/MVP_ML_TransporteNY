@@ -1,14 +1,14 @@
-![Sobre](vis/v1.jpg)
+![Sobre](public/v1.jpg)
 ---
 `En este archivo encuentra la introducción sobre la situación de la movilidad en transporte en Nueva York`
 ---
-![Intro](vis/v3.jpg)
+![Intro](public/v3.jpg)
 
 >La ciudad de Nueva York ha tenido un crecimiento acelerado en las últimas décadas, la ciudad cuenta con más de 8 millones de habitantes en su zona urbana y más de **22 millones de habitantes en la zona metropolitana**, cuenta con una densidad de **10.756 habitantes por kilometro cuadrado** según fuentes oficiales. Los desafíos en transporte también son relevantes, en promedio una persona gasta más de **40 minutos para llegar a su trabajo** y el sistema de transporte está compuesto de opciones como el metro, los autobuses, la bicicleta y los taxis regulados por la **Comisión de Taxis y Limosinas (TLC)** y el **Departamento de Transporte de la Ciudad de Nueva York (DOT)**.
 
-Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora en materia de transporte para mejorar la calidad de vida de los neoyorquinos en los que se destaca: mejorar la seguridad vial en las calles con la implementación del programa **Visión Cero**, expandir la **red de ciclorutas**, mejorar el tránsito para el **transporte público**, mejorar el **transporte de carga** debido a que la ciudad tuvo una explosión de compras en línea y entregas puerta a puerta, implementar un **sistema de aparcamiento inteligente** y un sistema de movilidad centrado en la **sostenibilidad**. Para ver más acerca de este reporte puede consultar la [Documentación](datasets\docs\Strategic-plan-2016.pdf)
+Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora en materia de transporte para mejorar la calidad de vida de los neoyorquinos en los que se destaca: mejorar la seguridad vial en las calles con la implementación del programa **publición Cero**, expandir la **red de ciclorutas**, mejorar el tránsito para el **transporte público**, mejorar el **transporte de carga** debido a que la ciudad tuvo una explosión de compras en línea y entregas puerta a puerta, implementar un **sistema de aparcamiento inteligente** y un sistema de movilidad centrado en la **sostenibilidad**. Para ver más acerca de este reporte puede consultar la [Documentación](https://github.com/clblommberg/MVP_ML_TransporteNY/blob/main/datasets/docs/Strategic-plan-2016.pdf)
 >
-> ![Alcance](vis/v4.jpg)
+> ![Alcance](public/v4.jpg)
 >
 > ## ¿Por qué metodología ágil y no tradicional?
 > 
@@ -30,7 +30,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > 
 > > > En este caso la planificación de las tareas se hace de manera **semanal**, un enfoque menos estricto y más realista en tiempo que el propuesto en las metodologías tradicionales, que permite asignar las tareas a las **necesidades** del proyecto semanal.
 > 
-> ![SCRUMBAN](vis/v2.jpg)
+> ![SCRUMBAN](public/v2.jpg)
 >
 > ## ¿Por qué SCRUMBAN?
 > 
@@ -38,7 +38,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > 
 > > ### Flexibilidad
 > > 
-> > > Ofrece la estructura y previsibilidad de **Scrum**, con sus iteraciones regulares y eventos definidos, junto con las prácticas flexibles, capacidad de respuesta y mejora continua de **Kanban**.
+> > > Ofrece la estructura y prepublicibilidad de **Scrum**, con sus iteraciones regulares y eventos definidos, junto con las prácticas flexibles, capacidad de respuesta y mejora continua de **Kanban**.
 > > 
 > > ### Adaptabilidad
 > > 
@@ -46,19 +46,19 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > 
 > > ### Gestión del flujo de trabajo
 > > 
-> > > El uso del tablero de Kanban permite **visualizar y controlar** el progreso de las tareas, y los **límites de trabajo** en progreso (WIP) ayudan a evitar el exceso de trabajo y los cuellos de botella.
+> > > El uso del tablero de Kanban permite **publicualizar y controlar** el progreso de las tareas, y los **límites de trabajo** en progreso (WIP) ayudan a evitar el exceso de trabajo y los cuellos de botella.
 > > 
 > > ### Colaboración y transparencia
 > > 
-> > > Los tableros de progreso son **visibles para todos**, lo que facilita la comunicación y la colaboración en torno a las tareas y objetivos del proyecto.
+> > > Los tableros de progreso son **publicibles para todos**, lo que facilita la comunicación y la colaboración en torno a las tareas y objetivos del proyecto.
 ---
-![ciclo](vis/v5.jpg)
+![ciclo](public/v5.jpg)
 
 > En cada uno de los sprints existen unas **actividades predefinidas** que establecen la organización del trabajo semanal, estas actividades son:
 > 
 > ## Definición de requerimientos
 > 
-> > Se revisan las solicitudes del Product Owner en cuanto a las **necesidades del cliente**, se establecen los **objetivos de la semana** y qué **productos** se van a entregar al finalizar el sprint.
+> > Se republican las solicitudes del Product Owner en cuanto a las **necesidades del cliente**, se establecen los **objetivos de la semana** y qué **productos** se van a entregar al finalizar el sprint.
 > 
 > ## Creación y asignación del backlog
 > 
@@ -78,7 +78,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > De acuerdo a la retroalimentación dada por el Product Owner se **efectúan las correcciones** antes del inicio del siguiente sprint.
 > > 
 
-![roles](vis/v6.jpg)
+![roles](public/v6.jpg)
 
 > La definición de roles nos permite **orientar las actividades** del grupo en función de las **habilidades y experiencias** previas del grupo, sin embargo la metodología escogida nos permite ejecutar estos roles de una manera **más fléxible**, en donde los roles se pueden intercambiar a medida de las **necesidades** del proyecto.
 > 
@@ -91,7 +91,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > > 
 > > > Su rol está enfocado en establecer una planificación dinámica, su objetivo es llevar al equipo a la culminación de las tareas de la semana y proponer acciones para resolver posibles obstáculos.
 > > > 
-> > > - Revisa junto al grupo los obstáculos y buscan resolverlos.
+> > > - Republica junto al grupo los obstáculos y buscan resolverlos.
 > > > - Crea las tareas que se realizarán en la semana en el tablero Kanban.
 > > > - Pregunta por la asignación de las tareas.
 > > 
@@ -99,7 +99,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > > 
 > > > Su rol está enfocado en dinamizar las reuniones diarias del grupo con el objetivo de **priorizar la ejecución de tareas** del grupo y evitar desviaciones de los objetivos de las reuniones.
 > > > 
-> > > - Revisar el orden del día acorde a la planificación de tareas.
+> > > - Republicar el orden del día acorde a la planificación de tareas.
 > > > - Moderar las reuniones del equipo en función de los objetivos de la reunión.
 > > > - Evita desviaciones de los objetivos de las reuniones.
 > > > - Controlar los tiempos de las reuniones y el respeto por estos espacios.
@@ -127,7 +127,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > > Extrae información significativa que pueda ayudar a la toma de decisiones y al logro de los objetivos organizacionales.
 > > > - Usa técnicas y herramientas estadísticas para explorar los conjuntos de datos e identificar información.
 > > > - Limpia y prepara los datos para su análisis.
-> > > - Crea y presenta informes con el uso de herramientas de storytelling y visualización.
+> > > - Crea y presenta informes con el uso de herramientas de storytelling y publicualización.
 > > > - Utiliza modelos de predicción para analizar resultados futuros.
 > > 
 > > ### Data Engineer
@@ -146,7 +146,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > > - Ajusta y optimiza los hiperparámetros para mejorar el rendimiento y precisión del modelo.
 > > > - Implementa los modelos entrenados en APIs y servicios en la nube.
 
-![eventos](vis/v7.jpg)
+![eventos](public/v7.jpg)
 
 > Se realiza una definición de las principales actividades que se van a desarrollar durante el desarrollo del proyecto y ayudarán a establecer la comunicación y la asignación de tareas.
 > 
@@ -166,7 +166,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > >
 > > ### Sprint 3 - Data Analytics & ML
 > > > 08 | Abril | 2024 → 12 | Abril | 2024
-> > > Su objetivo es crear las visualizaciones que serán la herramienta de la presentación y el modelo de aprendizaje en función de los objetivos planteados.
+> > > Su objetivo es crear las publicualizaciones que serán la herramienta de la presentación y el modelo de aprendizaje en función de los objetivos planteados.
 > > > - **ENTREGABLE:** Documentación del dashboard y el modelo de Machine Learning.
 > >
 > > ### Sprint 4 - Data plus
@@ -182,9 +182,9 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > (60 minutos) 10:30 AM 🇦🇷 | 8:30 AM 🇨🇴
 > >
 > > > Se realiza todos los lunes y determina la ruta de trabajo de la semana.
-> > > - Se revisan las tareas en el tablero Kanban.
+> > > - Se republican las tareas en el tablero Kanban.
 > > > - Se dividen las tareas en función de las habilidades del equipo.
-> > > - Se revisan los resultados de la retroalimentación (si la hay).
+> > > - Se republican los resultados de la retroalimentación (si la hay).
 > >
 > > ### Daily Scrum
 > > (30 minutos) 10:30 AM 🇦🇷 | 8:30 AM 🇨🇴
@@ -212,7 +212,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > (15 minutos) 02:00 PM 🇦🇷 | 12:00 MM 🇨🇴
 > >
 > > > Se realiza reunión posterior al Sprint Demo.
-> > > - Se revisan los comentarios de la retroalimentación del product owner.
+> > > - Se republican los comentarios de la retroalimentación del product owner.
 > > > - Se establecen tareas para corregir los aspectos de la retroalimentación antes de la reunión de inicio Sprint.
 > >
 > > ### Sprint Support
@@ -222,7 +222,7 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > > - Comunicar algún problema.
 > > > - Capacitar a los miembros del equipo sobre algún tema.
 >
-![herramientas](vis/v8.jpg)
+![herramientas](public/v8.jpg)
 
 > Se establecen las herramientas necesarias para la organización del trabajo, la colaboración y la comunicación.
 > 
@@ -249,4 +249,4 @@ Según el **Plan Estratégico de la ciudad** existen 6 oportunidades de mejora e
 > > Se crea el repositorio de GitHub para facilitar la colaboración en el desarrollo del proyecto.
 > > - Contiene toda la documentación del proyecto.
 > > - Se crean ramas para cada uno de los integrantes del grupo.
-> > - Se define un GitManager que revisará los cambios y aceptará los pull requests.
+> > - Se define un GitManager que republicará los cambios y aceptará los pull requests.
