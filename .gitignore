@@ -1,6 +1,7 @@
 datasets/raw 
 notebooks/.ipynb_checkpoints
 notebooks/.cache.sqlite
+notebooks/test.ipynb
 gantt.py  
 gantt.xls 
 MODEL.PY 
@@ -12,3 +13,5 @@ server/yellow_final_3.parquet
 notebooks/ETL_yellow_herlin.ipynb
 src/*.jpg
 pfenv
+venv/
+server/
