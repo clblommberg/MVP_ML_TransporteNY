@@ -10,3 +10,4 @@ dask==2024.1.1
 dask_labextension==7.0.0
 plotly==5.19.0
 pandas==2.2.1
+Django==5.0.4
