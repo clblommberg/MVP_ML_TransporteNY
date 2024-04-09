@@ -15,3 +15,4 @@ src/*.jpg
 pfenv
 venv/
 server/
+notebooks/test.ipynb
