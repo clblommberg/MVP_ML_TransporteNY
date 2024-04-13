@@ -14,5 +14,5 @@ notebooks/ETL_yellow_herlin.ipynb
 src/*.jpg
 pfenv
 venv/
-server/
+server/.env
 notebooks/test.ipynb
