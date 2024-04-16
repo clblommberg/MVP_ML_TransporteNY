@@ -7,8 +7,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from pathlib import Path
 import requests
-import re
 from datetime import datetime
+import signal
+import sys
+from urllib.parse import urljoin
 
 class DatasetDownloader:
     def __init__(self, base_url, download_folder):
@@ -18,7 +20,7 @@ class DatasetDownloader:
         
     def record_start_time(self):
         # Crear una carpeta para controles si no existe
-        control_folder = Path('datasets') / 'controles'
+        control_folder = Path('logs') / 'controles'
         control_folder.mkdir(parents=True, exist_ok=True)
         # Crear y registrar la fecha y hora de inicio en un archivo de texto
         start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -28,13 +30,18 @@ class DatasetDownloader:
     def record_end_time(self):
         # Registrar la fecha y hora de finalización en el mismo archivo de texto
         end_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open('datasets/controles/process_log.txt', 'a') as file:
+        with open('logs\\controles\\scrapy_log.txt', 'a') as file:
             file.write(f"Proceso finalizado: {end_time}\n\n")
+
+    def signal_handler(self, signal, frame):
+        print("Capturada señal de interrupción. Registrando hora de finalización.")
+        self.record_end_time()
+        sys.exit(0)
 
     def scrape_siniestros_urls(self):
         options = Options()
         options.headless = True
-        service = Service('C:\\Users\\ozi\\ti\\MVP_ML_TransporteNY\\notebooks\\geckodriver.exe')  # Ruta al ejecutable de GeckoDriver
+        service = Service('geckodriver.exe')  # Ruta al ejecutable de GeckoDriver
         driver = webdriver.Firefox(service=service, options=options)
         driver.get(self.base_url)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "a")))
@@ -71,6 +78,7 @@ class DatasetDownloader:
             print(f"Error details: {e}")
 
     def download_datasets(self):
+        signal.signal(signal.SIGINT, self.signal_handler)
         self.record_start_time()  # Registrar la hora de inicio
         file_urls_dict = self.scrape_siniestros_urls()
         for file_name, url in file_urls_dict.items():
@@ -78,8 +86,65 @@ class DatasetDownloader:
             self.download_file(url, save_path)
         self.record_end_time()  # Registrar la hora de finalización
 
-# Uso de ejemplo
-# base_url = 'https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page'
-# download_folder = '..\\datasets\\raw'
-# downloader = DatasetDownloader(base_url, download_folder)
-# downloader.download_datasets()
+class WebScraper:
+    def __init__(self, base_url, download_folder):
+        self.base_url = base_url
+        self.download_folder = Path(download_folder)
+        self.download_folder.mkdir(parents=True, exist_ok=True)
+
+    def scrape_dataset_url(self):
+        response = requests.get(self.base_url)
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        dataset_link = soup.find('a', string='README.md')
+        if dataset_link:
+            absolute_url = urljoin(self.base_url, dataset_link['href'])
+            readme_url = absolute_url
+        else:
+            print("No se encontró el enlace al README.md")
+            readme_url = None
+
+        csv_link = soup.select_one('a[href*="annotations.csv"]')
+        if csv_link:
+            csv_url = urljoin(self.base_url, csv_link['href'])
+        else:
+            print("No se encontró el enlace al archivo CSV")
+            csv_url = None
+
+        return readme_url, csv_url
+
+    def download_file(self, url, save_path):
+        try:
+            response = requests.get(url, stream=True)
+            response.raise_for_status()
+            with open(save_path, 'wb') as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+            print(f"Archivo guardado: {save_path}")
+        except Exception as e:
+            print(f"Error al descargar el archivo: {url}")
+            print(f"Error details: {e}")
+
+    def download_datasets(self):
+        readme_url, csv_url = self.scrape_dataset_url()
+        if readme_url:
+            save_path = self.download_folder / 'README.md'
+            self.download_file(readme_url, save_path)
+
+        if csv_url:
+            save_path = self.download_folder / 'datos.csv'
+            self.download_file(csv_url, save_path)
+
+
+if __name__ == "__main__":
+    # Uso de ejemplo
+    base_url = 'https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page'
+    download_folder = '..\\datasets\\raw'
+    downloader = DatasetDownloader(base_url, download_folder)
+    downloader.download_datasets()
+
+    # Uso de ejemplo de la clase DatasetDownloader
+    base_url_2 = 'https://zenodo.org/records/3966543'
+    download_folder_2 = '../datasets/raw'
+    downloader = WebScraper(base_url_2, download_folder_2)
+    downloader.download_datasets()

@@ -1,0 +1,3 @@
+Tiempo de inicio: 1713239490.0834746
+Tiempo de finalización: 1713240092.641259
+Duración total (segundos): 602.557784318924

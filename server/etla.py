@@ -14,8 +14,10 @@ def optimize_and_process_dataframe(df):
         if col in df.columns:
             df = df.drop(columns=col)
 
-    # Eliminar filas con valores nulos del DataFrame de Dask
     df = df.dropna()
+    # Filtrar por los años 2022 y 2023 en las columnas de fecha
+    df = df[(df['tpep_pickup_datetime'].dt.year.isin([2022, 2023])) & (df['tpep_dropoff_datetime'].dt.year.isin([2022, 2023]))]
+    # Eliminar filas con valores nulos del DataFrame de Dask
 
     # Convertir las columnas de fechas a tipo DateTime en Dask
     for col in ['tpep_pickup_datetime', 'tpep_dropoff_datetime']:
@@ -30,6 +32,7 @@ def optimize_and_process_dataframe(df):
     df['DuracionViaje'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds()
 
     # Filtrar registros que no cumplen con las condiciones
+    df = df[(df['RatecodeID'] > 1) & (df['RatecodeID'] <= 6)]
     df = df[(df['DuracionViaje'] > 310) & (df['DuracionViaje'] <= 2700)]
     df = df[(df['passenger_count'] > 0) & (df['passenger_count'] <= 4)]
     df = df[(df['trip_distance'] > 0.5) & (df['trip_distance'] <= 13)]
@@ -70,6 +73,18 @@ def optimize_and_process_dataframe(df):
 
     return df
 
+def is_processed(file_name):
+    try:
+        with open(os.path.join("logs", "controles", "processed_files.txt"), "r") as processed_log:
+            processed_files = processed_log.read().splitlines()
+            if file_name in processed_files:
+                return True
+            else:
+                return False
+    except Exception as e:
+        print(f"Error al verificar el estado del archivo: {e}")
+        return False
+
 def main():
     # Registro de hora de inicio
     start_time = datetime.now()
@@ -98,33 +113,45 @@ def main():
             if re.match(patron, archivo):
                 archivos_filtrados.append(archivo)
 
+        # Verificar cuántos archivos se han procesado
+        try:
+            with open(os.path.join("logs", "controles", "processed_files.txt"), "r") as processed_log:
+                processed_files = processed_log.read().splitlines()
+        except FileNotFoundError:
+            processed_files = []
+
         # Iterar sobre la lista de archivos filtrados
         for i, archivo in enumerate(archivos_filtrados):
-            # Definir la ruta completa del archivo Parquet
-            ruta_parquet = os.path.join("..", "datasets", "raw", archivo)
+            if archivo not in processed_files:
+                # Definir la ruta completa del archivo Parquet
+                ruta_parquet = os.path.join("..", "datasets", "raw", archivo)
 
-            # Cargar los datos en un DataFrame distribuido de Dask y particionarlo
-            df_dask = dd.read_parquet(ruta_parquet, engine='pyarrow')
-            df_dask_particionado = df_dask.repartition(npartitions=4)
+                # Cargar los datos en un DataFrame distribuido de Dask y particionarlo
+                df_dask = dd.read_parquet(ruta_parquet, engine='pyarrow')
+                df_dask_particionado = df_dask.repartition(npartitions=4)
 
-            # Aplicar el procesamiento avanzado a cada partición y escribir en Parquet
-            for j, particion in enumerate(df_dask_particionado.to_delayed()):
-                df_particion_procesado = optimize_and_process_dataframe(particion.compute())
+                # Aplicar el procesamiento avanzado a cada partición y escribir en Parquet
+                for j, particion in enumerate(df_dask_particionado.to_delayed()):
+                    df_particion_procesado = optimize_and_process_dataframe(particion.compute())
 
-                # Crear un archivo Parquet a partir de cada partición
-                ruta_salida = os.path.join("..", "datasets", "processed", "yellow_analytics", f"yellow_analytics_part_{i+1}_{j+1}.parquet")
-                df_particion_procesado.to_parquet(ruta_salida, engine='pyarrow')
+                    # Crear un archivo Parquet a partir de cada partición
+                    ruta_salida = os.path.join("..", "datasets", "processed", "yellow_analytics", f"yellow_analytics_part_{i+1}_{j+1}.parquet")
+                    df_particion_procesado.to_parquet(ruta_salida, engine='pyarrow')
 
-                # Esperar 10 segundos antes de iniciar el siguiente archivo
-                time.sleep(10)
-                print(f"Terminó ETL del archivo {i+1}, iniciando el archivo {i+2}...")
+                    # Registrar el archivo como procesado
+                    with open(os.path.join("logs", "controles", "processed_files.txt"), "a") as processed_log:
+                        processed_log.write(f"{archivo}\n")
+
+                    # Esperar 10 segundos antes de iniciar el siguiente archivo
+                    time.sleep(10)
+                    print(f"Terminó ETL del archivo {i+1}, iniciando el archivo {i+2}...")
 
     # Registro de hora de finalización y duración del proceso
     end_time = datetime.now()
     duration = end_time - start_time
 
     # Escribir en el archivo de logs
-    with open(os.path.join("..", "datasets", "controles", "etl_logs.txt"), "a") as log_file:
+    with open(os.path.join("..", "controles", "etl_logs.txt"), "a") as log_file:
         log_file.write(f"Inicio: {start_time}, Fin: {end_time}, Duración: {duration}\n")
 
 if __name__ == "__main__":

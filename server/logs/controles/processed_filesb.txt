@@ -1,0 +1,16 @@
+fhvhv_tripdata_2022-01.parquet
+fhvhv_tripdata_2022-01.parquet
+fhvhv_tripdata_2022-01.parquet
+fhvhv_tripdata_2022-01.parquet
+fhvhv_tripdata_2022-02.parquet
+fhvhv_tripdata_2022-02.parquet
+fhvhv_tripdata_2022-02.parquet
+fhvhv_tripdata_2022-02.parquet
+fhvhv_tripdata_2022-03.parquet
+fhvhv_tripdata_2022-03.parquet
+fhvhv_tripdata_2022-03.parquet
+fhvhv_tripdata_2022-03.parquet
+fhvhv_tripdata_2022-04.parquet
+fhvhv_tripdata_2022-04.parquet
+fhvhv_tripdata_2022-04.parquet
+fhvhv_tripdata_2022-04.parquet

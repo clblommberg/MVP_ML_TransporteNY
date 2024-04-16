@@ -48,7 +48,7 @@ def cargar_parquet_a_blob(archivo_parquet, ruta_directorio, account_name, accoun
 
     # Generar la ruta de destino en el contenedor Blob
     #ruta_destino_blob = f"raw-data/yellow_analytics/{archivo_parquet}"
-    ruta_destino_blob = f"raw-data/yellow_analytics/{archivo_parquet}"
+    ruta_destino_blob = f"raw-data/ffvh_analytics/{archivo_parquet}"
     # Conexión a la cuenta de almacenamiento
     blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
 
@@ -111,7 +111,7 @@ def cargar_datos_parquet(ruta_directorio, account_name, account_key, container_n
                 os.makedirs(carpeta_controles)
 
             # Guardar el registro en un archivo de texto
-            with open(os.path.join(carpeta_controles, "loaddata_logs.txt"), "w") as f:
+            with open(os.path.join(carpeta_controles, "loaddatab_logs.txt"), "w") as f:
                 f.write(f"Tiempo de inicio: {inicio}\n")
                 f.write(f"Tiempo de finalización: {fin}\n")
                 f.write(f"Duración total (segundos): {duracion}\n")
@@ -121,8 +121,8 @@ def cargar_datos_parquet(ruta_directorio, account_name, account_key, container_n
 
 
 # Ejemplo de uso de la función
-#ruta_directorio = r'C:\Users\ozi\ti\MVP_ML_TransporteNY\datasets\processed\yellow_analytics'
-ruta_directorio = r'C:\Users\ozi\ti\MVP_ML_TransporteNY\datasets\processed\yellow_analytics'
+#ruta_directorio = r'C:\Users\ozi\ti\MVP_ML_TransporteNY\datasets\processed\ffvh_analytics'
+ruta_directorio = r'C:\Users\ozi\ti\MVP_ML_TransporteNY\datasets\processed\ffvh_analytics'
 account_name = os.getenv("ACCOUNT_NAME")
 account_key = os.getenv("ACCOUNT_KEY")
 container_name = 'getdatalakefiles'
