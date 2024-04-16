@@ -1,7 +1,6 @@
 datasets/raw 
 notebooks/.ipynb_checkpoints
 notebooks/.cache.sqlite
-notebooks/test.ipynb
 gantt.py  
 gantt.xls 
 MODEL.PY 
@@ -14,7 +13,8 @@ src/*.jpg
 pfenv
 venv/
 server/.env
-notebooks/test.ipynb
+notebooks/.env
 clientapp/
 server/.cache.sqlite
 server/__pycache__
+.cache.sqlite
