@@ -25,7 +25,12 @@ def procesamiento_avanzado_particion(df):
     columnas_a_eliminar = ['tolls', 'bcf', 'sales_tax', 'congestion_surcharge', 
                            'airport_fee', 'tips', 'driver_pay']
     df = df.drop(columnas_a_eliminar, axis=1)
-    
+
+    # Filtrar por los años 2022 y 2023 en las columnas de fecha
+    df = df[(df['pickup_datetime'].dt.year.isin([2022, 2023])) & (df['dropoff_datetime'].dt.year.isin([2022, 2023]))]
+    # Filtrar por los años 2022 y 2023 en las columnas de fecha
+    df = df[(df['request_datetime'].dt.year.isin([2022, 2023])) & (df['on_scene_datetime'].dt.year.isin([2022, 2023]))]
+    # Eliminar filas con valores nulos del DataFrame de Dask
     # Convertir columnas de fechas a tipo DateTime en Dask
     for col in ['pickup_datetime', 'dropoff_datetime', 'request_datetime', 'on_scene_datetime']:
         df[col] = dd.to_datetime(df[col])
@@ -66,7 +71,7 @@ def procesamiento_avanzado_particion(df):
 
     return df
 
-def main(start_from=14):
+def main():
     # Registro de hora de inicio
     start_time = datetime.now()
 
@@ -94,12 +99,16 @@ def main(start_from=14):
             if re.match(patron, archivo):
                 archivos_filtrados.append(archivo)
 
-        # Limitar la lista de archivos a partir de start_from
-        archivos_filtrados = archivos_filtrados[start_from:]
+        # Verificar cuántos archivos se han procesado
+        try:
+            with open(os.path.join("logs", "controles", "processed_filesb.txt"), "r") as processed_log:
+                processed_files = processed_log.read().splitlines()
+        except FileNotFoundError:
+            processed_files = []
 
         # Iterar sobre la lista de archivos filtrados
-        for i, archivo in enumerate(archivos_filtrados, start=start_from):
-            try:
+        for i, archivo in enumerate(archivos_filtrados):
+            if archivo not in processed_files:
                 # Definir la ruta completa del archivo Parquet
                 ruta_parquet = os.path.join(ruta_directorio, archivo)
 
@@ -115,22 +124,24 @@ def main(start_from=14):
                     ruta_salida = os.path.join("..", "datasets", "processed", "ffvh_analytics", f"ffvh_analytics_part_{i}_{j+1}.parquet")
                     df_particion_procesado.to_parquet(ruta_salida, engine='pyarrow')
 
+                    # Registro de hora de finalización y duración del proceso
+                    end_time = datetime.now()
+                    duration = end_time - start_time
+
+                    # Escribir en el archivo de logs
+                    with open(os.path.join("logs","controles", "etlb_logs.txt"), "a") as log_file:
+                        log_file.write(f"Archivo procesado: {archivo}, Inicio: {start_time}, Fin: {end_time}, Duración: {duration}\n")
+
+                    # Registrar el archivo como procesado
+                    with open(os.path.join("logs", "controles", "processed_filesb.txt"), "a") as processed_log:
+                        processed_log.write(f"{archivo}\n")
+
                     # Esperar 10 segundos antes de iniciar el siguiente archivo
                     time.sleep(10)
-                    print(f"Terminó procesamiento del archivo {archivo}, partición {j+1}...")
-            except Exception as e:
-                # Manejar la excepción
-                print(f"Error al procesar el archivo {archivo}: {e}")
-                continue  # Continuar con el siguiente archivo
+                    print(f"Terminó ETL del archivo {i+1}, iniciando el archivo {i+2}...")
 
-    # Registro de hora de finalización y duración del proceso
-    end_time = datetime.now()
-    duration = end_time - start_time
-
-    # Escribir en el archivo de logs
-    with open(os.path.join("..", "datasets", "controles", "etlpass_logs.txt"), "a") as log_file:
-        log_file.write(f"Inicio: {start_time}, Fin: {end_time}, Duración: {duration}\n")
+                # Actualizar el tiempo de inicio para el próximo archivo
+                start_time = datetime.now()
 
 if __name__ == "__main__":
-    start_from = int(input("Ingrese el índice de inicio (0 para empezar desde el principio): "))
-    main(start_from)
+    main()

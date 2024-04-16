@@ -1,0 +1,16 @@
+Archivo procesado: fhvhv_tripdata_2022-01.parquet, Inicio: 2024-04-15 22:09:21.334393, Fin: 2024-04-15 22:11:03.968158, Duración: 0:01:42.633765
+Archivo procesado: fhvhv_tripdata_2022-01.parquet, Inicio: 2024-04-15 22:09:21.334393, Fin: 2024-04-15 22:12:56.754685, Duración: 0:03:35.420292
+Archivo procesado: fhvhv_tripdata_2022-01.parquet, Inicio: 2024-04-15 22:09:21.334393, Fin: 2024-04-15 22:14:50.228053, Duración: 0:05:28.893660
+Archivo procesado: fhvhv_tripdata_2022-01.parquet, Inicio: 2024-04-15 22:09:21.334393, Fin: 2024-04-15 22:16:44.058216, Duración: 0:07:22.723823
+Archivo procesado: fhvhv_tripdata_2022-02.parquet, Inicio: 2024-04-15 22:16:54.073157, Fin: 2024-04-15 22:18:47.707125, Duración: 0:01:53.633968
+Archivo procesado: fhvhv_tripdata_2022-02.parquet, Inicio: 2024-04-15 22:16:54.073157, Fin: 2024-04-15 22:20:46.964441, Duración: 0:03:52.891284
+Archivo procesado: fhvhv_tripdata_2022-02.parquet, Inicio: 2024-04-15 22:16:54.073157, Fin: 2024-04-15 22:22:46.424887, Duración: 0:05:52.351730
+Archivo procesado: fhvhv_tripdata_2022-02.parquet, Inicio: 2024-04-15 22:16:54.073157, Fin: 2024-04-15 22:24:44.354165, Duración: 0:07:50.281008
+Archivo procesado: fhvhv_tripdata_2022-03.parquet, Inicio: 2024-04-15 22:24:54.369109, Fin: 2024-04-15 22:27:29.717666, Duración: 0:02:35.348557
+Archivo procesado: fhvhv_tripdata_2022-03.parquet, Inicio: 2024-04-15 22:24:54.369109, Fin: 2024-04-15 22:30:05.159959, Duración: 0:05:10.790850
+Archivo procesado: fhvhv_tripdata_2022-03.parquet, Inicio: 2024-04-15 22:24:54.369109, Fin: 2024-04-15 22:32:43.508313, Duración: 0:07:49.139204
+Archivo procesado: fhvhv_tripdata_2022-03.parquet, Inicio: 2024-04-15 22:24:54.369109, Fin: 2024-04-15 22:35:19.153725, Duración: 0:10:24.784616
+Archivo procesado: fhvhv_tripdata_2022-04.parquet, Inicio: 2024-04-15 22:35:29.168666, Fin: 2024-04-15 22:37:43.612425, Duración: 0:02:14.443759
+Archivo procesado: fhvhv_tripdata_2022-04.parquet, Inicio: 2024-04-15 22:35:29.168666, Fin: 2024-04-15 22:40:17.367348, Duración: 0:04:48.198682
+Archivo procesado: fhvhv_tripdata_2022-04.parquet, Inicio: 2024-04-15 22:35:29.168666, Fin: 2024-04-15 22:42:50.809781, Duración: 0:07:21.641115
+Archivo procesado: fhvhv_tripdata_2022-04.parquet, Inicio: 2024-04-15 22:35:29.168666, Fin: 2024-04-15 22:45:17.049599, Duración: 0:09:47.880933
