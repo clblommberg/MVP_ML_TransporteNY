@@ -1,6 +1,6 @@
 from scrapy import DatasetDownloader
 from etl import main as etl_main
-from loaddata import cargar_datos_parquet
+from server.blob import cargar_datos_parquet
 import os
 from dotenv import load_dotenv
 # Cargar variables de entorno desde el archivo .env

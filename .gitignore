@@ -18,3 +18,4 @@ clientapp/
 server/.cache.sqlite
 server/__pycache__
 .cache.sqlite
+notebooks/loaddata.ipynb
