@@ -32,7 +32,7 @@ def optimize_and_process_dataframe(df):
     df['DuracionViaje'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds()
 
     # Filtrar registros que no cumplen con las condiciones
-    df = df[(df['RatecodeID'] > 1) & (df['RatecodeID'] <= 6)]
+    df = df[(df['RatecodeID'] > 0) & (df['RatecodeID'] <= 6)]
     df = df[(df['DuracionViaje'] > 310) & (df['DuracionViaje'] <= 2700)]
     df = df[(df['passenger_count'] > 0) & (df['passenger_count'] <= 4)]
     df = df[(df['trip_distance'] > 0.5) & (df['trip_distance'] <= 13)]
@@ -138,6 +138,12 @@ def main():
                     ruta_salida = os.path.join("..", "datasets", "processed", "yellow_analytics", f"yellow_analytics_part_{i+1}_{j+1}.parquet")
                     df_particion_procesado.to_parquet(ruta_salida, engine='pyarrow')
 
+                    # Registro de hora de finalización y duración del proceso
+                    end_time = datetime.now()
+                    duration = end_time - start_time
+                    # Escribir en el archivo de logs
+                    with open(os.path.join("logs", "controles", "etl_logs.txt"), "a") as log_file:
+                        log_file.write(f"Inicio: {start_time}, Fin: {end_time}, Duración: {duration}\n")
                     # Registrar el archivo como procesado
                     with open(os.path.join("logs", "controles", "processed_files.txt"), "a") as processed_log:
                         processed_log.write(f"{archivo}\n")
@@ -146,13 +152,8 @@ def main():
                     time.sleep(10)
                     print(f"Terminó ETL del archivo {i+1}, iniciando el archivo {i+2}...")
 
-    # Registro de hora de finalización y duración del proceso
-    end_time = datetime.now()
-    duration = end_time - start_time
-
-    # Escribir en el archivo de logs
-    with open(os.path.join("..", "controles", "etl_logs.txt"), "a") as log_file:
-        log_file.write(f"Inicio: {start_time}, Fin: {end_time}, Duración: {duration}\n")
+                # Actualizar el tiempo de inicio para el próximo archivo
+                start_time = datetime.now()
 
 if __name__ == "__main__":
     main()

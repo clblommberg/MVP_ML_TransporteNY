@@ -79,6 +79,36 @@ class DataExtractor:
 
         print("Data extraction and processing complete. Saved to:", output_file)
 
+class AcousticDataProcessor:
+    def __init__(self, input_file, output_folder):
+        self.input_file = input_file
+        self.output_folder = Path(output_folder)
+        self.output_folder.mkdir(parents=True, exist_ok=True)
+
+    def process_data(self):
+        # Leer el archivo CSV en un DataFrame
+        df = pd.read_csv(self.input_file)
+
+        # Seleccionar las variables relevantes
+        variables_seleccionadas = ['latitude', 'longitude', 'year', 'hour', '1-3_large-sounding-engine_presence', 
+                                   '1_engine_presence', '7_human-voice_presence', '2_machinery-impact_presence', 
+                                   '4_powered-saw_presence', '5_alert-signal_presence', '6_music_presence', 
+                                   'sensor_id', 'annotator_id']
+        df_procesado = df[variables_seleccionadas].copy()
+
+        # Eliminar la extensión ".wav" de los valores en la columna 'audio_filename'
+        df_procesado['audio_filename'] = df_procesado['audio_filename'].str.replace('.wav', '')
+
+        # Asignar códigos numéricos únicos a los valores en la columna 'audio_filename'
+        df_procesado['audio_filename_code'] = pd.Categorical(df_procesado['audio_filename']).codes
+
+        return df_procesado
+
+    def save_processed_data(self, df):
+        # Guardar el DataFrame procesado en formato Parquet
+        output_file = self.output_folder / 'acustic_usa.parquet'
+        df.to_parquet(output_file, index=False)
+        print("Acoustic data processing complete. Saved to:", output_file)
 
 if __name__ == "__main__":
     # Ruta al archivo CSV de entrada
@@ -99,3 +129,13 @@ if __name__ == "__main__":
     # Crear una instancia de la clase DataExtractor y extraer los datos
     extractor = DataExtractor(ruta_zip, output_folder_a)
     extractor.extract_and_process()
+
+    # Ruta al archivo CSV de entrada para el procesador de datos acústicos
+    input_file_a = "..\\..\\datasets\\raw\\datos.csv"   
+    # Ruta a la carpeta de salida para el archivo Parquet del procesador de datos acústicos
+    output_folder_a = "..\\datasets\\processed\\data_analytics"
+
+    # Crear una instancia de la clase AcousticDataProcessor y procesar los datos acústicos
+    acoustic_processor = AcousticDataProcessor(input_file_a, output_folder_a)
+    acoustic_data = acoustic_processor.process_data()
+    acoustic_processor.save_processed_data(acoustic_data)

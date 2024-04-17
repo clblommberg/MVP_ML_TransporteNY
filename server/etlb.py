@@ -11,8 +11,8 @@ def procesamiento_avanzado_particion(df):
     columnas_a_eliminar = ['originating_base_num', 'access_a_ride_flag', 'wav_request_flag', 
                            'wav_match_flag', 'shared_request_flag', 'shared_match_flag',
                            'access_a_ride_flag']
-    df = df.drop(columnas_a_eliminar, axis=1)
-    
+    df = df.drop(columns=columnas_a_eliminar)
+
     # Reemplazar valores nulos por 0.00 en columnas relevantes
     relevant_columns = ['base_passenger_fare', 'tolls', 'bcf', 'sales_tax', 'congestion_surcharge',
                         'airport_fee', 'tips', 'driver_pay']
@@ -22,15 +22,15 @@ def procesamiento_avanzado_particion(df):
     df['total_amount'] = df[relevant_columns].sum(axis=1)
 
     # Eliminar columnas no deseadas
-    columnas_a_eliminar = ['tolls', 'bcf', 'sales_tax', 'congestion_surcharge', 
-                           'airport_fee', 'tips', 'driver_pay']
-    df = df.drop(columnas_a_eliminar, axis=1)
+    df = df.drop(columns=['tolls', 'bcf', 'sales_tax', 'congestion_surcharge', 
+                          'airport_fee', 'tips', 'driver_pay'])
 
     # Filtrar por los años 2022 y 2023 en las columnas de fecha
-    df = df[(df['pickup_datetime'].dt.year.isin([2022, 2023])) & (df['dropoff_datetime'].dt.year.isin([2022, 2023]))]
-    # Filtrar por los años 2022 y 2023 en las columnas de fecha
-    df = df[(df['request_datetime'].dt.year.isin([2022, 2023])) & (df['on_scene_datetime'].dt.year.isin([2022, 2023]))]
-    # Eliminar filas con valores nulos del DataFrame de Dask
+    df = df[df['pickup_datetime'].dt.year.isin([2022, 2023])]
+    df = df[df['dropoff_datetime'].dt.year.isin([2022, 2023])]
+    df = df[df['request_datetime'].dt.year.isin([2022, 2023])]
+    df = df[df['on_scene_datetime'].dt.year.isin([2022, 2023])]
+
     # Convertir columnas de fechas a tipo DateTime en Dask
     for col in ['pickup_datetime', 'dropoff_datetime', 'request_datetime', 'on_scene_datetime']:
         df[col] = dd.to_datetime(df[col])
@@ -46,8 +46,27 @@ def procesamiento_avanzado_particion(df):
     # Eliminar filas con duraciones negativas o nulas
     df = df[df['DuracionAtencion'] >= 0]
     
+    # Calcular el rango intercuartílico (IQR) para todas las columnas numéricas
+    Q1 = df._get_numeric_data().quantile(0.25)
+    Q3 = df._get_numeric_data().quantile(0.75)
+    IQR = Q3 - Q1
+
+    # Definir los límites inferior y superior para filtrar los outliers
+    limite_inferior = Q1 - 1.5 * IQR
+    limite_superior = Q3 + 1.5 * IQR
+    
+    # Filtrar los outliers en las columnas numéricas
+    outliers = ((df._get_numeric_data() < limite_inferior) | (df._get_numeric_data() > limite_superior)).any(axis=1)
+
+    # Filtrar los registros originales que no son outliers
+    df_no_outliers = df[~outliers]
+
+    # Identificar los registros que son outliers
+    #outliers_data = df[outliers]
+    
     # Eliminar columnas originales
-    df = df.drop(columns=['pickup_datetime', 'dropoff_datetime', 'request_datetime', 'on_scene_datetime'])
+    df_no_outliers = df_no_outliers.drop(columns=['pickup_datetime', 'dropoff_datetime', 'request_datetime', 'on_scene_datetime'])
+    #outliers_data = outliers_data.drop(columns=['pickup_datetime', 'dropoff_datetime', 'request_datetime', 'on_scene_datetime'])
 
     # Renombrar las columnas del DataFrame de Dask
     new_column_names = {
@@ -67,9 +86,10 @@ def procesamiento_avanzado_particion(df):
         "on_scene_datetime_hora_minuto": "HoraAtendida",
         "total_amount": "CostoTotal"
     }
-    df = df.rename(columns=new_column_names)
+    df_no_outliers = df_no_outliers.rename(columns=new_column_names)
+    #outliers_data = outliers_data.rename(columns=new_column_names)
 
-    return df
+    return df_no_outliers
 
 def main():
     # Registro de hora de inicio
