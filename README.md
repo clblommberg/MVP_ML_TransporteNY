@@ -296,4 +296,4 @@ Se creó una página web donde se presentan los principales resultados de este e
 
 ### CALCULADORA DE VIAJE
 [![Calculadora-Viaje.png](https://i.postimg.cc/d0mH4N0x/Calculadora-Viaje.png)](https://postimg.cc/VSvWNRnq)
-
+.
