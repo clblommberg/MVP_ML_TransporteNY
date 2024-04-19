@@ -28,3 +28,8 @@ Al trabajar con grandes volúmenes de registros, es necesario cargar y almacenar
 Una vez realizados los pasos anteriores, se procedió de manera paralela a analizar y visualizar los datos obtenidos y a generar un modelo de Machine Learning (ML) que responda a los objetivos planteados. Para el primer caso, se exploraron e identificaron tendencias y se monitorearon métricas clave o indicadores de rendimiento (KPIs) para poder tomar decisiones informadas respecto al propósito del proyecto. A su vez, la creación del modelo de ML tuvo como objetivo generar predicciones de demanda de vehículos en los diferentes sectores de Nueva York. 
 #### 5. DEPLOY EN LA WEB DE LOS RESULTADOS OBTENIDOS
 Se creó una página web donde se presentan los principales resultados de este estudio. 
+
+
+
+
+
