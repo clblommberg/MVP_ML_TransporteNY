@@ -291,7 +291,7 @@ Una vez realizados los pasos anteriores, se procedió de manera paralela a anali
 ## 5. DEPLOY EN LA WEB DE LOS RESULTADOS OBTENIDOS
 Se creó una página web donde se presentan los principales resultados de este estudio.
 
-### ESTREAMLIT
+### STREAMLIT
 [![streamlit.png](https://i.postimg.cc/65qK794j/streamlit.png)](https://postimg.cc/PNg99n4Y)
 
 ### CALCULADORA DE VIAJE
