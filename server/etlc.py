@@ -22,7 +22,6 @@ class DataProcessor:
         df.to_parquet(output_file, index=False)
 
         print("Data processing complete. Saved to:", output_file)
-
 class DataExtractor:
     def __init__(self, zip_file, output_folder):
         self.zip_file = zip_file
@@ -30,54 +29,42 @@ class DataExtractor:
         self.output_folder.mkdir(parents=True, exist_ok=True)
 
     def extract_and_process(self):
-        # Lista para almacenar los datos de los archivos CSV
         datos_csv = []
 
-        # Abrir el archivo zip y leer los csv
         with zipfile.ZipFile(self.zip_file, 'r') as zip_ref:
-            # Recorrer cada archivo en el zip
             for nombre_archivo in zip_ref.namelist():
-                # Extraer archivo
                 with zip_ref.open(nombre_archivo) as archivo_csv:
-                    # Leer csv y almacenar datos en un df
                     datos = pd.read_csv(archivo_csv, sep=',', encoding='utf-8')
-                    # Agregar los datos a la lista
                     datos_csv.append(datos)
 
-        # Concatenar todos los df en uno solo
         df_emisiones = pd.concat(datos_csv, ignore_index=True)
 
-        # Filtrar por país 'United States'
         df_emisiones_usa = df_emisiones[df_emisiones['Country'] == 'United States']
 
-        # Filtrar por tipos de energía: 'petroleum_n_other_liquids' y 'renewables_n_other'
-        emisiones_usa = df_emisiones_usa.loc[(df_emisiones_usa['Energy_type'] == 'petroleum_n_other_liquids') | (df_emisiones_usa['Energy_type'] == 'renewables_n_other')]
+        emisiones_usa = df_emisiones_usa.loc[(df_emisiones_usa['Energy_type'] == 'petroleum_n_other_liquids') | (df_emisiones_usa['Energy_type'] == 'renewables_n_other')].copy()
 
-        # Eliminar columnas no deseadas
-        columns_to_drop = ['Unnamed: 0', 'Country', 'Energy_intensity_per_capita', 'Energy_intensity_by_GDP']
+        columns_to_drop = ['Unnamed: 0', 'Country', 'Energy_intensity_by_GDP','GDP']
         emisiones_usa.drop(columns=columns_to_drop, inplace=True)
 
-        # Renombrar columnas
         new_column_names = {
             'Energy_type': 'TipoEnergia',
             'Year': 'Anio',
             'Energy_consumption': 'ConsumoEnergia',
             'Energy_production': 'ProducionEnergia',
-            'GDP': 'ConsumoPerCapita',
+            'Energy_intensity_per_capita': 'ConsumoPerCapita',
             'Population': 'Poblacion',
             'CO2_emission': 'CantidadEmisionesCO2'
         }
         emisiones_usa.rename(columns=new_column_names, inplace=True)
 
-        # Reordenar las columnas del DataFrame
         new_column_order = ['Anio', 'TipoEnergia', 'ProducionEnergia', 'ConsumoEnergia', 'Poblacion', 'ConsumoPerCapita', 'CantidadEmisionesCO2']
         emisiones_usa = emisiones_usa.reindex(columns=new_column_order)
 
-        # Guardar el DataFrame procesado en formato Parquet
         output_file = self.output_folder / 'emisiones_usa.parquet'
         emisiones_usa.to_parquet(output_file, index=False)
 
         print("Data extraction and processing complete. Saved to:", output_file)
+
 
 class AcousticDataProcessor:
     def __init__(self, input_file, output_folder):
@@ -86,56 +73,45 @@ class AcousticDataProcessor:
         self.output_folder.mkdir(parents=True, exist_ok=True)
 
     def process_data(self):
-        # Leer el archivo CSV en un DataFrame
         df = pd.read_csv(self.input_file)
 
-        # Seleccionar las variables relevantes
         variables_seleccionadas = ['latitude', 'longitude', 'year', 'hour', '1-3_large-sounding-engine_presence', 
                                    '1_engine_presence', '7_human-voice_presence', '2_machinery-impact_presence', 
                                    '4_powered-saw_presence', '5_alert-signal_presence', '6_music_presence', 
                                    'sensor_id', 'annotator_id']
         df_procesado = df[variables_seleccionadas].copy()
 
-        # Eliminar la extensión ".wav" de los valores en la columna 'audio_filename'
-        df_procesado['audio_filename'] = df_procesado['audio_filename'].str.replace('.wav', '')
-
-        # Asignar códigos numéricos únicos a los valores en la columna 'audio_filename'
-        df_procesado['audio_filename_code'] = pd.Categorical(df_procesado['audio_filename']).codes
+        # Verificar si 'audio_filename' está presente en el DataFrame antes de realizar modificaciones
+        if 'audio_filename' in df_procesado.columns:
+            df_procesado['audio_filename'] = df_procesado['audio_filename'].str.replace('.wav', '')
+            df_procesado['audio_filename_code'] = pd.Categorical(df_procesado['audio_filename']).codes
+        else:
+            print("La columna 'audio_filename' no está presente en el DataFrame.")
 
         return df_procesado
 
     def save_processed_data(self, df):
-        # Guardar el DataFrame procesado en formato Parquet
         output_file = self.output_folder / 'acustic_usa.parquet'
         df.to_parquet(output_file, index=False)
         print("Acoustic data processing complete. Saved to:", output_file)
 
+
 if __name__ == "__main__":
-    # Ruta al archivo CSV de entrada
     input_file = "..\\datasets\\raw\\taxi_zone_lookup.csv"   
-    # Ruta a la carpeta de salida para el archivo Parquet
     output_folder = "..\\datasets\\processed\\data_analytics"
     
-    # Crear una instancia de la clase DataProcessor y procesar los datos
     processor = DataProcessor(input_file, output_folder)
     processor.process_and_save()
 
-
-    # Ruta al archivo ZIP de entrada
     ruta_zip = '..\\datasets\\raw\\archive.zip'
-    # Ruta a la carpeta de salida para el archivo Parquet
     output_folder_a = "..\\datasets\\processed\\data_analytics"
 
-    # Crear una instancia de la clase DataExtractor y extraer los datos
     extractor = DataExtractor(ruta_zip, output_folder_a)
     extractor.extract_and_process()
 
-    # Ruta al archivo CSV de entrada para el procesador de datos acústicos
-    input_file_a = "..\\..\\datasets\\raw\\datos.csv"   
-    # Ruta a la carpeta de salida para el archivo Parquet del procesador de datos acústicos
+    input_file_a = "..\\datasets\\raw\\datos.csv"   
     output_folder_a = "..\\datasets\\processed\\data_analytics"
 
-    # Crear una instancia de la clase AcousticDataProcessor y procesar los datos acústicos
     acoustic_processor = AcousticDataProcessor(input_file_a, output_folder_a)
     acoustic_data = acoustic_processor.process_data()
     acoustic_processor.save_processed_data(acoustic_data)
