@@ -43,12 +43,6 @@ El proyecto se llevará a cabo planificación [Scrumban](https://github.com/clbl
 
 5. **Desarrollar MVPs interactivos**: Se crearán MVPs interactivos, como dashboards en Streamlit, Power BI y una plataforma web, para visualizar y comunicar los resultados del análisis de datos y los modelos de Machine Learning.
 
-<style>
-    img {
-        width: 600px;
-        height: 300px;
-    }
-</style>
 
 ### Dashboard Powe BI
 [![Dashboard.png](https://i.postimg.cc/mDQQ8Ynm/Dashboard.png)](https://postimg.cc/yg8gNZsR)
