@@ -22,8 +22,8 @@ Para mayor comprención del modelo de datos [Documentacion](https://github.com/c
 | Tecnologías Utilizadas     | Recursos Min. Utilizados                           |
 |---------------------------|-----------------------------------------------|
 | Python 3.10.11                | Sistema Operativo: Windows                    |
-| Pandas                    | Memoria RAM: 16 GB                            |
-| Dask                      | CPU: 4 núcleos                                |
+| Pandas                    | Memoria RAM: 16 GB -32 GB                            |
+| Dask                      | CPU: 4 núcleos -8  núcleos                             |
 | Scikit-learn              |                                                |
 | Azure Synapse             |                                               |
 | Azure Data Lake Storage   |                                               |
