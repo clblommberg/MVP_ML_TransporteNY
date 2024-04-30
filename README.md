@@ -17,13 +17,13 @@ Dado que esta sería una nueva unidad de negocio, se propone realizar un anális
 - Desarrollar MVPs interactivos para presentar los resultados del análisis en Streamlit, Power BI y en una plataforma web.<br>
 Para mayor comprención del modelo de datos [Documentacion](https://github.com/clblommberg/MVP_ML_TransporteNY/blob/main/Documentacion.md)
 
-## Stack Tecnológico y Recursos Utilizados
+## Tecnologías Utilizadas  y Recursos Utilizados
 
 | Tecnologías Utilizadas     | Recursos Min. Utilizados                           |
 |---------------------------|-----------------------------------------------|
 | Python 3.10.11                | Sistema Operativo: Windows                    |
 | Pandas                    | Memoria RAM: 16 GB -32 GB                            |
-| Dask                      | CPU: 4 núcleos -8  núcleos                             |
+| Dask/Polars                      | CPU: 4 núcleos -8  núcleos                             |
 | Scikit-learn              |                                                |
 | Azure Synapse             |                                               |
 | Azure Data Lake Storage   |                                               |
