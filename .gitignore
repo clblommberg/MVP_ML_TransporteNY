@@ -21,4 +21,5 @@ server/__pycache__
 notebooks/loaddata.ipynb
 streamlit-test/
 streamlit/
-datasets/models
+datasets/models/*.pkl
+notebooks/.test.ipynb
