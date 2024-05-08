@@ -24,3 +24,4 @@ streamlit/
 datasets/models/*.pkl
 notebooks/.test.ipynb
 notebooks/04_loaddata.ipynb
+datasets/models/modelo_rf.parquet
